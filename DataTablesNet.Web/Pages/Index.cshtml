@@ -16,33 +16,31 @@
             </tr>
         </thead>
         <tbody>
-
         </tbody>
     </table>
 </div>
 @section Scripts {
-<script type="text/javascript">
-    $(function() {
-        var table = $("#tblExample").DataTable({
-            serverSide: true,
-            search: {
-                return: true, // Search only triggered on Enter press
-            },
-            columns: [
-                { data: "date" },
-                { data: "temperatureC" },
-                { data: "temperatureF" },
-                { data: "summary" },
-            ],
-            ajax: {
-                url: 'http://localhost:5000/datatables',
-                type: 'POST'
-            }
-        });
+    <script type="text/javascript">$(function () {
+            var table = $("#tblExample").DataTable({
+                ordering: true,
+                serverSide: true,
+                search: {
+                    return: true, // Search only triggered on Enter press
+                },
+                columns: [
+                    { name: "Date", data: "date" },
+                    { name: "TemperatureC", data: "temperatureC" },
+                    { name: "TemperatureF", data: "temperatureF" },
+                    { name: "Summary", data: "summary" },
+                ],
+                ajax: {
+                    url: 'https://localhost:5001/datatables',
+                    type: 'POST'
+                }
+            });
 
-        table.on('search.dt', function(e) {
-            console.log('Search triggered.' + e);
-        });
-    })
-</script>
+            table.on('search.dt', function (e) {
+                console.log('Search triggered.' + e);
+            });
+        })</script>
 }
